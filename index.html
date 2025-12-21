@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BuilderID — Endless Skill Passport</title>
+    <style>
+        body {
+            background: #0f0c14;
+            color: white;
+            font-family: 'Segoe UI', sans-serif;
+            padding: 20px;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        .header {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+        .step {
+            background: #1a1425;
+            padding: 20px;
+            border-radius: 10px;
+            margin-bottom: 20px;
+        }
+        .badge {
+            width: 128px;
+            height: 128px;
+            border: 2px solid #ff0000;
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 10px;
+            cursor: pointer;
+        }
+        .badge:hover {
+            transform: scale(1.1);
+            box-shadow: 0 0 15px #ff0000;
+        }
+        button {
+            background: #ff0000;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 5px;
+            cursor: pointer;
+            margin-top: 10px;
+        }
+        button:hover {
+            background: #cc0000;
+        }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <h1>BuilderID — Your Web3 Résumé</h1>
+        <p>Powered by Endless Protocol’s DID & ZKP</p>
+    </div>
+
+    <div class="step">
+        <h2>✅ Step 1: Connect Wallet</h2>
+        <p>Mock wallet connected! (No real connection needed)</p>
+        <button onclick="alert('Wallet connected!')">
+            Connect Mock Wallet
+        </button>
+    </div>
+
+    <div class="step">
+        <h2>🛠️ Step 2: Claim Skill</h2>
+        <p>Upload your proof (GitHub link, Figma, etc.)</p>
+        <input type="text" placeholder="Paste GitHub URL here" id="proofInput" style="width: 100%; padding: 10px; margin: 10px 0;">
+        <button onclick="generateSummary()">
+            Generate AI Summary
+        </button>
+        <div id="summary" style="margin-top: 10px; padding: 10px; background: #221a2e; border-radius: 5px;"></div>
+    </div>
+
+    <div class="step">
+        <h2>🏆 Step 3: Showcase & Mint NFT</h2>
+        <div style="display: flex; flex-wrap: wrap; gap: 10px;">
+            <div class="badge" onclick="alert('ZK Prover badge minted!')">
+                <img src="https://i.ibb.co/6yH1sWv/zk-prover-badge.png" alt="ZK Prover" style="width: 100%; height: 100%; object-fit: cover;">
+            </div>
+            <div class="badge" onclick="alert('AI Agent Builder badge minted!')">
+                <img src="https://i.ibb.co/8D2F1jz/ai-agent-badge.png" alt="AI Agent" style="width: 100%; height: 100%; object-fit: cover;">
+            </div>
+        </div>
+        <button onclick="alert('NFT minted successfully!')">
+            Mint as NFT
+        </button>
+    </div>
+
+    <script>
+        function generateSummary() {
+            const proof = document.getElementById('proofInput').value;
+            if (!proof) {
+                alert('Please paste a proof link!');
+                return;
+            }
+            const summary = `
+                <strong>AI Summary:</strong><br>
+                Built a gasless tip bot using Endless SDK v2.<br>
+                Clean architecture, 92% test coverage.<br>
+                Verified by ZK-proof — no data leaked.
+            `;
+            document.getElementById('summary').innerHTML = summary;
+        }
+    </script>
+</body>
+</html>
